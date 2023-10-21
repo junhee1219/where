@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue.js Example</title>
+    <script src="https://unpkg.com/vue@next"></script>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+        <div id="app">
+          <div class="container">
+            <h1>내 지하철 위치</h1>
+            <div class="tile-container">
+              <div v-for="line in subwayLines" :key="line.id" :id="line.id" class="tile" @click="selectTile(line.name)" v-html="line.name"></div>
+              </div>
+            <p>열차번호를 입력하고 조회버튼을 누르세요</p>
+            <div class="input-group">
+              <input v-model="trainNumber" type="text" placeholder="열차 번호"/>
+              <button @click="searchTrain">조회</button>
+            </div>
+            <div v-if="result" class="result-box">
+              {{ result }}
+            </div>
+          </div>
+        </div>
+        <script src="app.js"></script>
+</body>
+</html>
